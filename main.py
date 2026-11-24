@@ -9,7 +9,7 @@ TEXT = "My grandfather ran the same eleven-minute ferry for forty years, and on 
 
 def main() -> None:
     assert 1 <= len(TEXT) <= 280
-    out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
+    out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR") or os.environ.get("OUTPUT_DIR", "/output"))
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "entry.txt").write_bytes(TEXT.encode("utf-8"))
     print(len(TEXT), file=sys.stderr)
